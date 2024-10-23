@@ -1,5 +1,5 @@
 
-# Create a Excel XLSX file using raw table in CSV, TSV or JSON format
+# data2xls: Create a Excel XLSX file using raw table in CSV, TSV or JSON format
 
 This utility creates a Excel workbook file from raw text tables, like CSV, TSV or JSON.
 
@@ -28,7 +28,7 @@ data2xlsx -a out.xlsx -sheet-name="my new page" newpage.csv
 Or, you may use pipe to directly send data to a new sheet.
 ```sh
 cat newpage.csv | data2xlsx -a out.xlsx -data-type=csv
-``
+```
 
 
 ---

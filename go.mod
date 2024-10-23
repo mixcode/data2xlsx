@@ -1,6 +1,6 @@
 module github.com/mixcode/data2xlsx
 
-go 1.23.2
+go 1.21.0
 
 require github.com/tealeg/xlsx/v3 v3.3.10
 
