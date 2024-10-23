@@ -30,13 +30,12 @@ func getFileType(fileName string) fileType {
 	return FILETYPE_UNKNOWN
 }
 
-
 // Read json stream.
 // This function reads read multiple json objects in the stream
 // then returns all of them in an array.
 func importJSON(stream io.Reader) ([]any, error) {
 	dec := json.NewDecoder(stream)
-	dec.UseNumber()	// decode JSON nuber to json.Number object
+	dec.UseNumber() // decode JSON nuber to json.Number object
 	res := make([]any, 0)
 	for dec.More() {
 		var v any

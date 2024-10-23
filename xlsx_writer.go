@@ -1,9 +1,9 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
-	"encoding/json"
 
 	"github.com/tealeg/xlsx/v3" // tealeg's xlsx toolkit, v3
 )
@@ -130,13 +130,13 @@ func addSheet(wb *xlsx.File, sheetId, sheetNo int, fType fileType, reader io.Rea
 
 					case json.Number:
 						iVal, e := v.Int64()
-						if e==nil {
+						if e == nil {
 							wCel.SetInt64(iVal)
 							break
 						}
 
 						fVal, e := v.Float64()
-						if e==nil {
+						if e == nil {
 							wCel.SetFloat(fVal)
 							break
 						}

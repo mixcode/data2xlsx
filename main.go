@@ -9,9 +9,7 @@ import (
 	"github.com/tealeg/xlsx/v3"
 )
 
-//
 // command line options
-//
 var (
 	flagDataType  string // csv, tsv, json
 	flagSheetName string // Sheet names
@@ -37,15 +35,14 @@ func getSheetName(sheetId, sheetNo int) string { // return a table sheet name
 	return fmt.Sprintf("Table %d", sheetNo)
 }
 
-
 // actual main routine
 func run() (err error) {
 
 	// XLSX book
 	var wb *xlsx.File
-	var outFile string	// xlsx filename to save
+	var outFile string // xlsx filename to save
 
-	if flagAppendXlsx != "" {	// "append sheets to existing xlsx"
+	if flagAppendXlsx != "" { // "append sheets to existing xlsx"
 		// open an existing xlsx file
 		wb, err = xlsx.OpenFile(flagAppendXlsx)
 		if err != nil {
@@ -56,7 +53,7 @@ func run() (err error) {
 		}
 		outFile = flagAppendXlsx
 		flagOverwrite = true
-	} else if flagOutputXlsx != "" {	// "create a new xlsx"
+	} else if flagOutputXlsx != "" { // "create a new xlsx"
 		// create a new book
 		wb = xlsx.NewFile()
 		outFile = flagOutputXlsx
@@ -86,10 +83,9 @@ func run() (err error) {
 	sheetNo := 1 + len(wb.Sheets) // start page number of the newly added sheets
 	inFile := flag.Args()
 
-
 	if len(inFile) == 0 { // no file name given: use STDIN for data stream
 
-		if len(dataTypes)==0 {
+		if len(dataTypes) == 0 {
 			// neither file name and file type for STDIN are given
 			return fmt.Errorf("data filename, or file type for stdin must be given")
 		}
@@ -240,5 +236,3 @@ func main() {
 		os.Exit(1)
 	}
 }
-
-
